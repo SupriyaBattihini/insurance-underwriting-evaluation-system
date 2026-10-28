@@ -1,0 +1,36 @@
+entity,field,type,required,allowed_values_or_units,validation
+Applicant,applicant_id,string,yes,APP-YYYY-NNNNNN,Primary key and unique
+Applicant,age,integer,yes,years,18 to 120 for schema records
+Applicant,region,string,yes,North|South|East|West|Central,Must be one listed region
+Applicant,customer_status,string,yes,ACTIVE|INACTIVE,Must be one listed status
+InsuredAsset,asset_id,string,yes,AST-YYYY-NNNNNN,Primary key and unique
+InsuredAsset,applicant_id,string,yes,Applicant ID,Must reference Applicant
+InsuredAsset,asset_value,decimal,yes,INR,Must be greater than zero
+InsuredAsset,risk_data_complete,boolean,yes,true|false,Indicates required risk fields are present
+Product,product_id,string,yes,PRD-NNN,Primary key and unique
+Product,base_rate,decimal,yes,rate fraction,Must be greater than zero
+Product,max_coverage,decimal,yes,INR,Must be greater than zero
+CoverageOption,coverage_id,string,yes,COV-NNN,Primary key and unique
+CoverageOption,product_id,string,yes,Product ID,Must reference Product
+RiskFactor,risk_factor_id,string,yes,RSK-NNN,Primary key and unique
+RiskFactor,premium_multiplier,decimal,yes,multiplier,Must be greater than zero
+Quote,quote_id,string,yes,QTE-YYYY-NNNNNN,Primary key and unique
+Quote,applicant_id,string,yes,Applicant ID,Must reference Applicant
+Quote,asset_id,string,yes,Asset ID,Must reference InsuredAsset
+Quote,requested_coverage,decimal,yes,INR,Must be positive and within product limit
+Quote,calculated_premium,decimal,optional,INR,Recomputed using product rate and risk multiplier
+Policy,policy_id,string,yes,POL-YYYY-NNNNNN,Primary key and unique
+Policy,quote_id,string,yes,Quote ID,Must reference Quote
+Policy,start_date,date,yes,ISO date,Must precede end_date
+Policy,end_date,date,yes,ISO date,Must follow start_date
+Policy,status,string,yes,ISSUED|CANCELLED,Must be a documented lifecycle status
+Endorsement,endorsement_id,string,yes,END-policy-id-NNN,Primary key and unique
+Endorsement,policy_id,string,yes,Policy ID,Must reference Policy
+Endorsement,effective_date,date,yes,ISO date,Must be within permitted policy lifecycle
+Renewal,renewal_id,string,yes,REN-policy-id-YYYY,Primary key and unique
+Renewal,policy_id,string,yes,Policy ID,Must reference Policy
+Renewal,status,string,yes,PENDING|ACCEPTED|DECLINED|EXPIRED,Must be a documented status
+UnderwritingDecision,decision_id,string,yes,DEC-YYYY-NNNNNN,Primary key and unique
+UnderwritingDecision,quote_id,string,yes,Quote ID,Must reference Quote
+UnderwritingDecision,decision,string,yes,APPROVED|REFERRED|DECLINED,Must be a documented decision
+UnderwritingDecision,reason_codes,string,yes,Pipe-separated codes,Must explain the decision
