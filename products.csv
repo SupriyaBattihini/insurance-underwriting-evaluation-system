@@ -1,0 +1,4 @@
+product_id,product_name,base_rate,max_coverage,min_age,max_age,effective_from,status
+PRD-001,Motor Insurance,0.02,2000000,18,85,2026-01-01,ACTIVE
+PRD-002,Property Insurance,0.01,10000000,18,100,2026-01-01,ACTIVE
+PRD-003,Personal Accident Insurance,0.005,5000000,18,70,2026-01-01,ACTIVE

@@ -1,0 +1,4 @@
+coverage_id,product_id,coverage_name,min_limit,max_limit,effective_from
+COV-001,PRD-001,Standard,1000,2000000,2026-01-01
+COV-002,PRD-002,Standard,1000,10000000,2026-01-01
+COV-003,PRD-003,Standard,1000,5000000,2026-01-01

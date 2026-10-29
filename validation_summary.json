@@ -1,0 +1,42 @@
+{
+  "status": "COMPLETED_WITH_EXCEPTIONS",
+  "row_counts": {
+    "applicants": 3000,
+    "assets": 3000,
+    "quotes": 4000,
+    "policies_including_overlap_test": 2001,
+    "endorsements": 250,
+    "renewals": 1200,
+    "ground_truth_labels": 5
+  },
+  "issue_count": 5,
+  "issues": [
+    {
+      "check": "PREMIUM_MISMATCH",
+      "entity": "QTE-2026-000002",
+      "count": 1,
+      "labelled": true
+    },
+    {
+      "check": "POLICY_WITHOUT_ACCEPTANCE_OR_PAYMENT",
+      "entity": "POL-2026-000001",
+      "count": 1
+    },
+    {
+      "check": "POLICY_WITHOUT_ACCEPTANCE_OR_PAYMENT",
+      "entity": "POL-2026-002001",
+      "count": 1
+    },
+    {
+      "check": "ENDORSEMENT_LIMIT_EXCEEDED",
+      "entity": "END-POL-2026-000001-001",
+      "count": 1
+    },
+    {
+      "check": "RENEWAL_FOR_CANCELLED_POLICY",
+      "entity": "REN-POL-2026-000200-2027",
+      "count": 1
+    }
+  ],
+  "ground_truth_labels_are_separate_from_input_features": true
+}

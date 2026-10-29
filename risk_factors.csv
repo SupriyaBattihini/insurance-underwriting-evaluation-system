@@ -1,0 +1,4 @@
+risk_factor_id,factor_name,premium_multiplier,effective_from,effective_to
+RSK-001,Low,1.0,2026-01-01,
+RSK-002,Medium,1.5,2026-01-01,
+RSK-003,High,2.5,2026-01-01,

@@ -1,0 +1,20 @@
+{
+  "project": "Insurance Underwriting Evaluation System",
+  "seed": 20261022,
+  "generator_version": "1.0",
+  "data_type": "synthetic",
+  "source_manifest": "No external personal data used",
+  "row_counts": {
+    "applicants.csv": 3000,
+    "insured_assets.csv": 3000,
+    "products.csv": 3,
+    "coverage_options.csv": 3,
+    "risk_factors.csv": 3,
+    "quotes.csv": 4000,
+    "policies.csv": 2001,
+    "underwriting_decisions.csv": 4000,
+    "endorsements.csv": 250,
+    "renewals.csv": 1200,
+    "ground_truth.csv": 5
+  }
+}
