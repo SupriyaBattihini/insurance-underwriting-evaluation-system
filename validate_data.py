@@ -77,7 +77,38 @@ def validate():
             max_limit = float(product_map.get(policy_product[pid], 0))
             if float(e["coverage_after"]) > max_limit:
                 issues.append({"check": "ENDORSEMENT_LIMIT_EXCEEDED", "entity": e["endorsement_id"], "count": 1})
+    # Overlapping policy period checks
+    active_policies = policies[
+        policies["status"].astype(str).str.upper().isin(["ACTIVE", "ISSUED"])
+    ].copy()
 
+    active_policies["start_date"] = pd.to_datetime(
+        active_policies["start_date"], errors="coerce"
+    )
+    active_policies["end_date"] = pd.to_datetime(
+        active_policies["end_date"], errors="coerce"
+    )
+
+    for i, p1 in active_policies.iterrows():
+        for j, p2 in active_policies.iterrows():
+            if i >= j:
+                continue
+
+            if (
+                p1["applicant_id"] == p2["applicant_id"]
+                and p1["asset_id"] == p2["asset_id"]
+                and pd.notna(p1["start_date"])
+                and pd.notna(p1["end_date"])
+                and pd.notna(p2["start_date"])
+                and pd.notna(p2["end_date"])
+                and p1["start_date"] <= p2["end_date"]
+                and p2["start_date"] <= p1["end_date"]
+            ):
+                issues.append({
+                    "check": "UNPERMITTED_POLICY_OVERLAP",
+                    "entity": f"{p1['policy_id']} / {p2['policy_id']}",
+                    "count": 1
+                })
     # Renewal for cancelled policy
     cancelled = set(policies.loc[policies.status == "CANCELLED", "policy_id"])
     for _, r in renewals.iterrows():
