@@ -9,7 +9,7 @@
     "renewals": 1200,
     "ground_truth_labels": 5
   },
-  "issue_count": 5,
+  "issue_count": 6,
   "issues": [
     {
       "check": "PREMIUM_MISMATCH",
@@ -30,6 +30,11 @@
     {
       "check": "ENDORSEMENT_LIMIT_EXCEEDED",
       "entity": "END-POL-2026-000001-001",
+      "count": 1
+    },
+    {
+      "check": "UNPERMITTED_POLICY_OVERLAP",
+      "entity": "POL-2026-000001 / POL-2026-002001",
       "count": 1
     },
     {
